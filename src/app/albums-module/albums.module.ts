@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { AlbumsListComponent } from './components/albums-list/albums-list.component';
 import { AddAlbumComponent } from './components/add-album/add-album.component';
 import { EditAlbumComponent } from './components/edit-album/edit-album.component';
+import { AlbumsService } from './services/albums.service';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  providers: [AlbumsService],
   declarations: [
     AlbumsContainerComponent,
     AddAlbumComponent,

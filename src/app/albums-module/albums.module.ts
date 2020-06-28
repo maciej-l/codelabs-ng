@@ -1,10 +1,19 @@
-import { AlbumsContainerComponent } from './container/albums-container.component';
-import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
+import { NgxsModule } from '@ngxs/store';
+
+import { SharedModule } from './../shared/shared.module';
+import { AlbumsService } from './services/albums.service';
+import { AlbumsState } from './state/albums';
+import { AlbumsContainerComponent } from './container/albums-container.component';
 import { AlbumsListComponent } from './components/albums-list/albums-list.component';
-import { AddAlbumComponent } from './components/add-album/add-album.component';
-import { EditAlbumComponent } from './components/edit-album/edit-album.component';
+import { AlbumFormComponent } from './components/album-form/album-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormActions } from './config/form-actions.enum';
+import { RemoveAlbumComponent } from './components/remove-album/remove-album.component';
+
 
 const routes: Routes = [
   {
@@ -13,7 +22,21 @@ const routes: Routes = [
     children: [
       {
         path: 'list',
-        component: AlbumsListComponent,
+        component: AlbumsListComponent
+      },
+      {
+        path: 'edit/:id',
+        component: AlbumFormComponent,
+        data: {
+          formActionType: FormActions.IS_EDITING
+        }
+      },
+      {
+        path: 'add',
+        component: AlbumFormComponent,
+        data: {
+          formActionType: FormActions.IS_ADDING
+        }
       },
       {
         path: '',
@@ -25,13 +48,24 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  providers: [
+    AlbumsService
+  ],
+  entryComponents: [
+    RemoveAlbumComponent
+  ],
   declarations: [
     AlbumsContainerComponent,
-    AddAlbumComponent,
-    EditAlbumComponent
+    AlbumsListComponent,
+    AlbumFormComponent,
+    RemoveAlbumComponent,
   ],
   imports: [
     CommonModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxsModule.forFeature([AlbumsState]),
     RouterModule.forChild(routes)
   ]
 })

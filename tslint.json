@@ -1,6 +1,7 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "triple-equals": false,
     "align": {
       "options": [
         "parameters",

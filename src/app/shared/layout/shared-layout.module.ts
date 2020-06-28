@@ -1,21 +1,27 @@
+import { AngularMaterialModule } from './../material/angular-material.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TableEditActionsComponent } from './components/table-edit-actions/table-edit-actions.component';
+import { FormButtonsComponent } from './components/form-buttons/form-buttons.component';
 
 const COMPONENTS = [
   MainLayoutComponent,
   TopBarComponent,
-  FooterComponent
+  FooterComponent,
+  TableEditActionsComponent,
+  FormButtonsComponent
 ];
 
 @NgModule({
   declarations: [ COMPONENTS ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    AngularMaterialModule
   ],
   exports: [ COMPONENTS ]
 })

@@ -1,4 +1,6 @@
+import { GetListOfAllAlbumsAction } from './../state/actions/albums.actions';
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-albums-container',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlbumsContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private store: Store
+  ) { }
 
   ngOnInit(): void {
+    this.store.dispatch(new GetListOfAllAlbumsAction());
   }
 
 }

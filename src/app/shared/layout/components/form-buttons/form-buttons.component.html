@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-12 text-right">
+        <button 
+            (click)="onCancelClicked()"
+            mat-button>
+                Anuluj
+        </button>
+        <button 
+            (click)="onSaveDClicked()"
+            [disabled]="formisInvalid"
+            mat-flat-button 
+            color="primary">
+                Zapisz
+        </button>
+    </div>
+</div>

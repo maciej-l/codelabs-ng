@@ -1,0 +1,15 @@
+.mat-toolbar-multiple-rows {
+    max-height: 1rem;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+    max-height: 2rem;
+}
+
+.mat-toolbar-multiple-rows {
+    min-height: 2rem;
+}
+
+span {
+    font-size: .7rem;
+    font-weight: 300;
+}

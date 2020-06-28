@@ -1,3 +1,4 @@
+import { EditAlbumComponent } from './components/edit-album/edit-album.component';
 import { SharedModule } from './../shared/shared.module';
 import { AlbumsService } from './services/albums.service';
 import { AlbumsState } from './state/albums';
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'list',
         component: AlbumsListComponent
+      },
+      {
+        path: 'edit/:id',
+        component: EditAlbumComponent
       },
       {
         path: '',

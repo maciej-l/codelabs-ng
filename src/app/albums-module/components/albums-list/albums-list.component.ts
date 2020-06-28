@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { TableHeaders } from '../../config/table-headers.enum';
+import { pageSizeOptions } from 'src/app/shared/config/page-size-options';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-albums-list',
@@ -17,13 +19,17 @@ export class AlbumsListComponent implements OnInit {
 
   @Select(selectAllAlbums) public allAlbums$: Observable<IAllAlbumsModel[]>;
 
-  displayedColumns: string[] = [TableHeaders.ID, TableHeaders.USER_ID, TableHeaders.TITLE];
+  displayedColumns: string[] = [TableHeaders.ID, TableHeaders.USER_ID, TableHeaders.TITLE, TableHeaders.EDIT_ACTIONS];
   dataSource: MatTableDataSource<IAllAlbumsModel>;
+  public pageSize: number[] = pageSizeOptions;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.allAlbums$.subscribe(data => {
@@ -31,6 +37,15 @@ export class AlbumsListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+  }
+
+  onEditClicked(id: number) {
+    console.log(id);
+    this.router.navigate(['../edit', id], {relativeTo: this.activatedRoute});
+  }
+
+  onRemoveClicked(id: number) {
+    console.log(id);
   }
 
   applyFilter(event: Event) {

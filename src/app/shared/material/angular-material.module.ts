@@ -8,36 +8,23 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 const MATERIAL_MODULES = [
   MatCardModule,
-  MatIconModule,
-  MatButtonModule,
-  MatTableModule,
-  MatFormFieldModule,
-  MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule
 ];
 
 
 @NgModule({
   declarations: [],
-  imports: [
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatPaginatorModule
-  ],
-  exports: [
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatPaginatorModule
-  ]
+  imports: [ ...MATERIAL_MODULES ],
+  exports: [ ...MATERIAL_MODULES ]
 })
 export class AngularMaterialModule { }

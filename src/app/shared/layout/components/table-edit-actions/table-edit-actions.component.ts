@@ -19,7 +19,7 @@ export class TableEditActionsComponent implements OnInit {
     this.editClicked.emit(true);
   }
 
-  onRemoveCliked() {
+  public onRemoveCliked() {
     this.removeClicked.emit(true);
   }
 

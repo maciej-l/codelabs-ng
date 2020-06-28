@@ -3,11 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SharedLayoutModule } from './layout/shared-layout.module';
 import { AngularMaterialModule } from './material/angular-material.module';
 
-const MODULES = [
-  SharedLayoutModule,
-  AngularMaterialModule
-];
-
 @NgModule({
   declarations: [],
   imports: [
@@ -17,7 +12,7 @@ const MODULES = [
   ],
   exports: [
     SharedLayoutModule,
-  AngularMaterialModule
+    AngularMaterialModule
   ]
 })
 export class SharedModule { }

@@ -4,13 +4,16 @@ import { CommonModule } from '@angular/common';
 
 import { NgxsModule } from '@ngxs/store';
 
-import { EditAlbumComponent } from './components/edit-album/edit-album.component';
 import { SharedModule } from './../shared/shared.module';
 import { AlbumsService } from './services/albums.service';
 import { AlbumsState } from './state/albums';
 import { AlbumsContainerComponent } from './container/albums-container.component';
 import { AlbumsListComponent } from './components/albums-list/albums-list.component';
 import { AlbumFormComponent } from './components/album-form/album-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormActions } from './config/form-actions.enum';
+import { RemoveAlbumComponent } from './components/remove-album/remove-album.component';
+
 
 const routes: Routes = [
   {
@@ -23,7 +26,17 @@ const routes: Routes = [
       },
       {
         path: 'edit/:id',
-        component: EditAlbumComponent
+        component: AlbumFormComponent,
+        data: {
+          formActionType: FormActions.IS_EDITING
+        }
+      },
+      {
+        path: 'add',
+        component: AlbumFormComponent,
+        data: {
+          formActionType: FormActions.IS_ADDING
+        }
       },
       {
         path: '',
@@ -38,14 +51,20 @@ const routes: Routes = [
   providers: [
     AlbumsService
   ],
+  entryComponents: [
+    RemoveAlbumComponent
+  ],
   declarations: [
     AlbumsContainerComponent,
     AlbumsListComponent,
     AlbumFormComponent,
+    RemoveAlbumComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgxsModule.forFeature([AlbumsState]),
     RouterModule.forChild(routes)
   ]

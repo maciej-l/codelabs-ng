@@ -4,5 +4,3 @@ export enum TableHeaders {
     TITLE = 'title',
     EDIT_ACTIONS = 'edit_actions'
 }
-
-

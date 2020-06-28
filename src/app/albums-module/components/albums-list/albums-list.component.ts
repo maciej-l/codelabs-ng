@@ -1,7 +1,8 @@
+import { AddAlbumAction } from './../../state/actions/albums.actions';
 import { IAllAlbumsModel } from './../../models/albums';
 import { selectAllAlbums } from './../../state/select/albums';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -9,6 +10,8 @@ import { MatSort } from '@angular/material/sort';
 import { TableHeaders } from '../../config/table-headers.enum';
 import { pageSizeOptions } from 'src/app/shared/config/page-size-options';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { RemoveAlbumComponent } from '../remove-album/remove-album.component';
 
 @Component({
   selector: 'app-albums-list',
@@ -28,7 +31,8 @@ export class AlbumsListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private matDialg: MatDialog
   ) {}
 
   ngOnInit() {
@@ -39,12 +43,16 @@ export class AlbumsListComponent implements OnInit {
     });
   }
 
-  onEditClicked(id: number) {
+  public onEditClicked(id) {
     this.router.navigate(['../edit', id], {relativeTo: this.route});
   }
 
-  onRemoveClicked(id: number) {
-    console.log(id);
+  public onRemoveClicked(id: number, title: string) {
+    this.matDialg.open(RemoveAlbumComponent, { data: {id, title}});
+  }
+
+  public onAddClicked() {
+    this.router.navigate(['../add'], {relativeTo: this.route});
   }
 
   applyFilter(event: Event) {

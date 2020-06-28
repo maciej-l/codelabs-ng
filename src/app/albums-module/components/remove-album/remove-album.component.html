@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Kasujesz album:</h1>
+<div mat-dialog-content>
+    {{ title }}
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="cancelClicked()">Anuluj</button>
+    <button mat-flat-button color="warn" (click)="removeClicked()">Skasuj</button>
+</div>

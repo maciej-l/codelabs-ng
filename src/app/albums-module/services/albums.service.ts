@@ -26,4 +26,16 @@ export class AlbumsService {
       })
       ));
   }
+
+  updateAlbum(payload: IAllAlbumsModel): Observable<IAllAlbumsModel> {
+    return this.http.put<AlbumsListServerDto>(`${this.API_URL}/albums/${payload.id}`, payload);
+  }
+
+  addAlbum(payload: IAllAlbumsModel): Observable<IAllAlbumsModel> {
+    return this.http.post<AlbumsListServerDto>(`${this.API_URL}/albums`, payload);
+  }
+
+  removeAlbum(payload: number) {
+    return this.http.delete(`${this.API_URL}/albums/${payload}`);
+  }
 }

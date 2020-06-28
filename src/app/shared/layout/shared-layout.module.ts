@@ -7,13 +7,15 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TableEditActionsComponent } from './components/table-edit-actions/table-edit-actions.component';
 import { FormButtonsComponent } from './components/form-buttons/form-buttons.component';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
 
 const COMPONENTS = [
   MainLayoutComponent,
   TopBarComponent,
   FooterComponent,
   TableEditActionsComponent,
-  FormButtonsComponent
+  FormButtonsComponent,
+  MainNavComponent
 ];
 
 @NgModule({

@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { MatDialogModule, MatDialogConfig, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { MatSnackBarModule, MatSnackBarConfig, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
@@ -24,7 +26,8 @@ const MATERIAL_MODULES = [
   MatInputModule,
   MatFormFieldModule,
   MatDialogModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatToolbarModule
 ];
 
 const MAT_SNACK_CUSTOM_GLOBAL_OPTIONS: MatSnackBarConfig = {

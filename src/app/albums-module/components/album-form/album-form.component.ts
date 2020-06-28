@@ -19,6 +19,7 @@ export class AlbumFormComponent implements OnInit, AfterViewInit {
   public ONLY_NUMBERS = '^[0-9]*$';
   public editedAlbumId: number;
   private formAction: string;
+  public cardTitle: string;
 
   constructor(
     private fb: FormBuilder,
@@ -31,6 +32,11 @@ export class AlbumFormComponent implements OnInit, AfterViewInit {
     this.buildForm();
     this.getParams();
     this.getAlbumId();
+    if (this.formAction === FormActions.IS_EDITING) {
+      this.cardTitle = 'Edytujesz album:';
+    } else {
+      this.cardTitle = 'Dodajesz album';
+    }
   }
 
   ngAfterViewInit() {

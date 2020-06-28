@@ -28,7 +28,7 @@ export class AlbumsListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -40,8 +40,7 @@ export class AlbumsListComponent implements OnInit {
   }
 
   onEditClicked(id: number) {
-    console.log(id);
-    this.router.navigate(['../edit', id], {relativeTo: this.activatedRoute});
+    this.router.navigate(['../edit', id], {relativeTo: this.route});
   }
 
   onRemoveClicked(id: number) {

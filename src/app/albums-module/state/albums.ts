@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 
 import * as fromActions from './actions/albums.actions';
 import { Navigate } from '@ngxs/router-plugin';
+import { SnackSuccessAction } from 'src/app/shared/gui/state/actions/gui.actions';
 
 export interface AlbumsStateModel {
     albums: IAllAlbumsModel[];
@@ -78,6 +79,7 @@ export class AlbumsState {
         });
 
         this.store.dispatch(new Navigate(['/albums-list']));
+        this.store.dispatch(new SnackSuccessAction('Album został zaktualizowany'));
     }
 
     @Action(fromActions.AddAlbumAction)
@@ -105,6 +107,7 @@ export class AlbumsState {
         });
 
         this.store.dispatch(new Navigate(['/albums-list']));
+        this.store.dispatch(new SnackSuccessAction('Album został dodany'));
     }
 
     @Action(fromActions.RemoveAlbumAction)
@@ -137,5 +140,6 @@ export class AlbumsState {
             ...state,
             albums: action.payload
         });
+        this.store.dispatch(new SnackSuccessAction('Album został skasowany'));
     }
 }

@@ -2,6 +2,7 @@ import { RemoveAlbumAction } from './../../state/actions/albums.actions';
 import { Component, OnInit, ViewChild, Injectable, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngxs/store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-remove-album',
@@ -27,7 +28,9 @@ export class RemoveAlbumComponent implements OnInit {
   }
 
   public removeClicked() {
-    this.store.dispatch(new RemoveAlbumAction(this.data.id));
+    this.store.dispatch(new RemoveAlbumAction(this.data.id)).subscribe(() => {
+      this.dialogRef.close();
+    });
   }
 
 }

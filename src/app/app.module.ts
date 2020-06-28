@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { GuiState } from './shared/gui/state/gui.state';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
-    NgxsModule.forRoot([]),
+    NgxsModule.forRoot([
+      GuiState
+    ]),
     NgxsLoggerPluginModule.forRoot({
       disabled: environment.production,
     }),

@@ -6,11 +6,13 @@
         mat-flat-button color="primary">Dodaj album</button>
     </div>
   </div>
-  <div class="row col-12 clo-lg-4">
-    <mat-form-field>
-      <mat-label>Wpisz szukaną frazę</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="np Tytuł albumu">
-    </mat-form-field>
+  <div class="row">
+    <div class="col-12 col-lg-4 mt-3">
+      <mat-form-field>
+        <mat-label>Wpisz szukaną frazę</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="np Tytuł albumu">
+      </mat-form-field>
+    </div>
   </div>
   <div class="row">
     <div class="col-12">
@@ -47,6 +49,11 @@
 
         <mat-paginator [pageSizeOptions]="pageSize"></mat-paginator>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center mt-5">
+      <a mat-button [routerLink]="['/']">Wróć</a>
     </div>
   </div>
 </section>

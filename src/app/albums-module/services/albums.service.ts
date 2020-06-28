@@ -1,9 +1,10 @@
+import { IAllAlbumsModel } from './../models/albums';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AlbumsListServerDto } from './albums-list.dtos';
 
 import { map } from 'rxjs/operators';
-import { IAlbumsModel } from '../models/albums';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AlbumsService {
@@ -14,16 +15,15 @@ export class AlbumsService {
     private http: HttpClient
   ) { }
 
-  getAlbumsList() {
-    return this.http.get<AlbumsListServerDto>(`${this.API_URL}/albums`).pipe(
-      map(response => {
-        return {
-          id: response.id,
-          title: response.title,
-          userId: response.userId
-        } as IAlbumsModel;
+  getAlbumsList(): Observable<IAllAlbumsModel[]> {
+    return this.http.get<AlbumsListServerDto[]>(`${this.API_URL}/albums`).pipe(
+      map(response => response.map(data => {
+         return {
+          id: data.id,
+          title: data.title,
+          userId: data.userId
+        } as IAllAlbumsModel;
       })
-    );
-
+      ));
   }
 }

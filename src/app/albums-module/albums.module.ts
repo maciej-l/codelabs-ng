@@ -1,11 +1,12 @@
+import { SharedModule } from './../shared/shared.module';
+import { AlbumsService } from './services/albums.service';
+import { AlbumsState } from './state/albums';
+import { NgxsModule } from '@ngxs/store';
 import { AlbumsContainerComponent } from './container/albums-container.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlbumsListComponent } from './components/albums-list/albums-list.component';
-import { AddAlbumComponent } from './components/add-album/add-album.component';
-import { EditAlbumComponent } from './components/edit-album/edit-album.component';
-import { AlbumsService } from './services/albums.service';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
     children: [
       {
         path: 'list',
-        component: AlbumsListComponent,
+        component: AlbumsListComponent
       },
       {
         path: '',
@@ -26,14 +27,17 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  providers: [AlbumsService],
+  providers: [
+    AlbumsService
+  ],
   declarations: [
     AlbumsContainerComponent,
-    AddAlbumComponent,
-    EditAlbumComponent
+    AlbumsListComponent
   ],
   imports: [
     CommonModule,
+    SharedModule,
+    NgxsModule.forFeature([AlbumsState]),
     RouterModule.forChild(routes)
   ]
 })

@@ -1,3 +1,28 @@
+.mat-card-header {
+    display: flex;
+    justify-content: center;
+}
+
+.mat-card-content {
+    display: flex;
+    margin: 1.25rem 0;
+    justify-content: center;
+    min-height: 5rem;
+    
+    img {
+        width: 60%;
+        height: auto;
+    }
+}
+
 .mat-icon {
     font-size: 5rem;
+}
+
+.mat-card-actions {
+    display: flex;
+    justify-content: space-around;
+    a {
+        text-transform: uppercase;
+    }
 }

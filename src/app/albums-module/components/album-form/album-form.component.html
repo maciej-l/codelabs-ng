@@ -1,0 +1,45 @@
+<mat-card>
+    <div class="row mb-3">
+        <div class="col-12">
+            <mat-card-title>
+                {{ cardTitle }}
+            </mat-card-title>
+        </div>
+    </div>
+    <form [formGroup]="dataForm">
+        <div class="row">
+            <div class="col-12 col-lg-3">
+                <mat-form-field>
+                    <mat-label>Numer Użytkownika</mat-label>
+                    <input formControlName="userId" matInput placeholder="Wpisz nr Użytkownika">
+                    <mat-error *ngIf="dataForm.get('userId').hasError('required') && !dataForm.get('userId').hasError('pattern')">
+                        Pole jest wymagane
+                    </mat-error>
+                    <mat-error *ngIf="dataForm.get('userId').hasError('pattern')">
+                        Dozwolene tylko liczby
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6 mt-3">
+                <mat-form-field>
+                    <mat-label>Tytuł albumu</mat-label>
+                    <input formControlName="title" matInput placeholder="Wpisz tytuł albumu">
+                    <mat-error *ngIf="dataForm.get('title').hasError('required')">
+                        Pole jest wymagane
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12 col-lg-6">
+                <app-form-buttons
+                    [formisInvalid]="dataForm.invalid"
+                    (saveClicked)="onSaveClicked()"
+                    (cancelClicked)="cancelClicked()">
+                </app-form-buttons>
+            </div>
+        </div>
+    </form>
+</mat-card>

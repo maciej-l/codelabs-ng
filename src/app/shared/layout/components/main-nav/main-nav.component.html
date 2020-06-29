@@ -1,0 +1,7 @@
+<ul>
+    <li *ngFor="let item of navigation">
+        <a mat-button [routerLink]="[item.path]" [routerLinkActive]="item.activeClass" [disabled]="item.isDisabled">
+            {{ item.title }}
+        </a>
+    </li>
+</ul>
